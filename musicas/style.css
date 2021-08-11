@@ -1,0 +1,60 @@
+body{
+    background-color: rgba(0, 0, 0, 0.863);
+}
+.card{
+    width: 250px;
+    background-color: rgba(0, 0, 0, 0.527);
+    margin: 20px;
+    font-family: 'Roboto', sans-serif;
+    color:#fff;
+    font-size: 0.75em;
+    border-radius: 6px;
+}
+.card:hover{
+    background-color: rgba(0, 0, 0, 0.384);
+}
+.card h2{
+    font-weight: bold;
+}
+.card h3{
+    font-weight: 300;
+}
+.card h3:hover{
+    text-decoration: underline;
+}
+.card-itens{
+    margin: 20px;
+    margin-bottom: 40px;
+}
+.card-itens img{
+    width: 210px;
+    height: 200px;
+}
+#musicas{
+
+    justify-content: center;
+}
+section{
+    justify-content: center;
+}
+#botao{
+    width: 40px;
+    height: 40px;
+    margin-left: 160px;
+    margin-top: -50px;
+    animation: animation 0.5s ease-in-out forwards;
+    
+}
+#botao:hover{
+    animation: animation 0.5s ease-in-out forwards;
+    
+}
+@keyframes animation {
+    0%{
+        transform: translateY(-20px),;
+        
+    }
+    100%{
+        transform: translateY(-30px);
+    }
+}
