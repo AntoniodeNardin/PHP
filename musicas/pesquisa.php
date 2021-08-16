@@ -8,10 +8,17 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+        body{
+            color: white;
+        }
+    </style>
 <?php
+$pesquisa = 'one more light';
 try {
+    
     $con = new PDO('mysql:host=localhost;dbname=musicas', 'root', 'root') or print(mysqli_error());
-    $query = $con->prepare("select album,artista,imagem from albuns");
+    $query = $con->prepare("select album,artista,imagem from albuns where album like '%$pesquisa%'");
     $query->execute();
     if ($query->rowCount() > 0) {
 

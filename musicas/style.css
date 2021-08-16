@@ -31,7 +31,7 @@ body{
     height: 200px;
 }
 #musicas{
-
+    display: flex;
     justify-content: center;
 }
 section{

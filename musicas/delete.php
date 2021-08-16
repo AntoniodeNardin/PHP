@@ -17,17 +17,7 @@ try {
 
         while ($row = $query->fetch(PDO::FETCH_OBJ)){
 
-            echo '<main>
-            <section id="musicas">
-            <div class="card">
-            <div class="card-itens"><img src="'.$row->imagem.'" alt="">'.'<img src="images/green-play-button-png.png" class="play" alt="" id="botao">
-            <strong><h2>' .$row->artista.'</h2>
-            </strong><h3>'. $row->album .'</h3>
-            </div>
-            </div>
-            </div>
-            </section>
-            </main>';
+            echo '<main><section id="musicas"><div class="card"><div class="card-itens"><img src="'.$row->imagem.'" alt="">'.'<img src="images/green-play-button-png.png" class="play" alt="" id="botao"><strong><h2>' .$row->artista.'</h2></strong><h3>'. $row->album .'</h3></div></div></div></section></main>';
 
         }
     }
