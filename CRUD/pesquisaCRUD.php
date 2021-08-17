@@ -5,55 +5,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/2ecd7b4161.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+<style>
+    h1{
+        margin-top:30px;
+        margin-left: -30px;
+    }
+    #list{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    #list i{
+        margin-left: 10px;
+    }
+    section{
+        margin-top: 10px;
+    }
+    form{
+        margin-top: 45px;
+    }
+    header{
+        justify-content:space-between;
+    }
+    header ul{
+        display: flex;
+    }
+    #search{
+        margin-left: 10px;
+    }
+    button{
+        border-radius: 4px;
+        margin-left: 4px;
+    }
+</style>
 <body>
 <div class="container">
-    <h1>Pesquisa</h1>
+    <header>
+        <ul>
+            <h1>Pesquisa</h1>
+            <form action="pesquisaCRUD.php" method="post">
+            <input type="search" name="pesquisa" id="search" class="input">
+            <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+        </ul>
+        <a href="listaCRUD.php" id="list" class="btn btn-primary">Lista<i class="fas fa-bars"></i></a>
+    </header>
     <hr>
-    <form action="pesquisaCRUD.php" method="post">
-        <input type="search" name="pesquisa" id="" class="input">
-        <input type="submit" value="pesquisar" class="input submit">
-    </form>
-    <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Profissão</th>
-                    <th>data de nascimento</th>
-                    <th>ações</th>
-                </tr>
-                </thead>
-                <tbody>
+    <section>
+        <table class="table table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Profissão</th>
+                        <th>data de nascimento</th>
+                        <th>ações</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+    </section>
 <?php
-if(isset($_POST['pesquisa'])){
-    $pesquisa = $_POST['pesquisa'];
-    try {
-        
-        $con = new PDO('mysql:host=localhost;dbname=CRUD', 'root', 'root') or print(mysqli_error());
-        $query = $con->prepare("select idPessoas,nome,funcao,data_de_nascimento from Pessoas where nome like '%$pesquisa%'");
-        $query->execute();
-        if ($query->rowCount() > 0) {
-    
-            while ($row = $query->fetch(PDO::FETCH_OBJ)){
-    
-                echo '
-                <form action="editarCRUD.php" method="post">
-                <tr>
-                    <td>'.$row->nome.'</td>
-                    <td>'.$row->funcao.'</td>
-                    <td>'.$row->data_de_nascimento.'</td>
-                    <td>
-                      <input type="hidden" name="id" value="'.$row->idPessoas.'" hidden>
-                      <button type = "submit" class = "btn-primary" >editar</button></form>
-                </tr>';
-            }
-        }
-    } catch (PDOException $exception) {
-        echo $exception->getMessage();
-    }
-}
+require_once 'pesquisa.php';
 ?>
 </div>
 </tbody>

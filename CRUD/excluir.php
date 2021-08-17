@@ -11,8 +11,7 @@
 if(isset($_POST['id'])){
     $excluir = $_POST['id'];
     try {
-        
-        $con = new PDO('mysql:host=localhost;dbname=CRUD', 'root', 'root') or print(mysqli_error());
+         require_once 'conexão.php';
         $query = $con->prepare("delete from Pessoas where idPessoas = $excluir");
         $query->execute();
         if ($query->rowCount() > 0) {

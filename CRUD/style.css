@@ -1,6 +1,8 @@
 h1{
-    margin-top: 40px;
+    margin-top: 30px;
 }
-form{
-    display: block;
+header{
+    display: flex;
+    justify-content: space-between;
 }
+

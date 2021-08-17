@@ -5,14 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/2ecd7b4161.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+<style>
+  p{
+    margin-top: 24px;
+  }
+  a{
+    margin-right: 8px;
+  }
+  header{
+    display: flex;
+    justify-content: space-between;
+  }
+  header i{
+    margin-left: 10px;
+  }
+  #list{
+    margin-top: 24px;
+    margin-bottom: 20px;
+  }
+  footer{
+    margin-top: 50px;
+  }
+
+</style>
 <body>
     <div class="container">
-        <h1>Cadastro</h1>
+        <header>
+          <h1>Cadastro</h1>
+          <a href="listaCRUD.php" id="list" class="btn btn-primary">Lista<i class="fas fa-bars"></i></a>
+        </header>
         <hr>
-        <form action="cadastroCRUD.php" method="post">
+        <form action="cadastro.php" method="post">
         <div class="row mb-3">
                   <label for="inputName3" class="col-sm-2 col-form-label">Nome</label>
                   <div class="col-sm-10">
@@ -20,7 +47,7 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label for="inputFuncao3" class="col-sm-2 col-form-label">Função</label>
+                  <label for="inputFuncao3" class="col-sm-2 col-form-label">Profissão</label>
                   <div class="col-sm-10">
                     <input type="text" class="form-control" id="inputPassword3" name="funcao" required>
                   </div>
@@ -32,28 +59,15 @@
                     </div>
                   </div>
                   
-               <p><button type="submit" class="btn btn-primary">Cadastrar</button>  </p>
+               <footer>
+                 <a href="listaCRUD.php" class="btn btn-danger">Cancelar</a>
+                   <button type="submit" class="btn btn-primary">Cadastrar</button>
+               </footer>
         </form>
    
 
 <?php
-if(isset($_POST['nome'],$_POST['funcao'],$_POST['data_de_nascimento'])){
-    $account = [
-        'nome' => $_POST['nome'],
-        'funcao' => $_POST['funcao'],
-        'data_de_nascimento' => $_POST['data_de_nascimento']
-    ];
-    
-    try {
-        $con = new PDO('mysql:host=localhost;dbname=CRUD', 'root', 'root') or print(mysqli_error());
-        $query = $con->prepare("insert into Pessoas(nome, funcao, data_de_nascimento) values (:nome, :funcao, :data_de_nascimento )")->execute($account);
-        echo '<button class = "button button-primary">Salvo com sucesso</button>';
-    
-    }catch (PDOException $exception){
-        echo $exception->getMessage();
-    }
-
-};
+require_once 'cadastro.php'
 ?>
  </div>
     </body>
