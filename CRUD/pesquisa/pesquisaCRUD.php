@@ -51,7 +51,7 @@
             <button type="submit"><i class="fas fa-search"></i></button>
                 </form>
         </ul>
-        <a href="listaCRUD.php" id="list" class="btn btn-primary">Lista<i class="fas fa-bars"></i></a>
+        <a href="../lista/listaCRUD.php" id="list" class="btn btn-primary">Lista<i class="fas fa-bars"></i></a>
     </header>
     <hr>
     <section>

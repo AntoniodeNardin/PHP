@@ -36,7 +36,7 @@
     <div class="container">
         <header>
           <h1>Cadastro</h1>
-          <a href="listaCRUD.php" id="list" class="btn btn-primary">Lista<i class="fas fa-bars"></i></a>
+          <a href="../lista/listaCRUD.php" id="list" class="btn btn-primary">Lista<i class="fas fa-bars"></i></a>
         </header>
         <hr>
         <form action="cadastro.php" method="post">
@@ -60,7 +60,7 @@
                   </div>
                   
                <footer>
-                 <a href="listaCRUD.php" class="btn btn-danger">Cancelar</a>
+                 <a href="../lista/listaCRUD.php" class="btn btn-danger">Cancelar</a>
                    <button type="submit" class="btn btn-primary">Cadastrar</button>
                </footer>
         </form>

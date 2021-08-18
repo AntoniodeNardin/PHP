@@ -7,10 +7,10 @@ if(isset($_POST['nome'],$_POST['funcao'],$_POST['data_de_nascimento'])){
     ];
     
     try {
-      require 'conexão.php';
+      require '../conexão/conexão.php';
         $query = $con->prepare("insert into Pessoas(nome, funcao, data_de_nascimento) values (:nome, :funcao, :data_de_nascimento )")->execute($account);
         echo '<button class = "button button-primary">Salvo com sucesso</button>';
-        header('location:listaCRUD.php');
+        header('location:../lista/listaCRUD.php');
     
     }catch (PDOException $exception){
         echo $exception->getMessage();

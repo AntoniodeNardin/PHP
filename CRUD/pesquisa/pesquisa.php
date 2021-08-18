@@ -2,7 +2,7 @@
 if(isset($_POST['pesquisa'])){
     $pesquisa = $_POST['pesquisa'];
     try {
-        require_once 'conexão.php';
+        require_once '../conexão/conexão.php';
         $query = $con->prepare("select idPessoas,nome,funcao,data_de_nascimento from Pessoas where nome like '%$pesquisa%'");
         $query->execute();
         if ($query->rowCount() > 0) {
@@ -10,7 +10,7 @@ if(isset($_POST['pesquisa'])){
             while ($row = $query->fetch(PDO::FETCH_OBJ)){
     
                 echo '
-                <form action="editarCRUD.php" method="post">
+                <form action="../editar/editarCRUD.php" method="post">
                 <tr>
                     <td>'.$row->nome.'</td>
                     <td>'.$row->funcao.'</td>

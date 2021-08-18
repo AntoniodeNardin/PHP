@@ -40,10 +40,10 @@
               <h1>Lista</h1>
               <ul>
                 <li>
-                <a class = "btn btn-dark" id="search" href="pesquisaCRUD.php">Pesquisa<i class="fas fa-search"></i></a>
+                <a class = "btn btn-dark" id="search" href="../pesquisa/pesquisaCRUD.php">Pesquisa<i class="fas fa-search"></i></a>
                 </li>
                 <li>
-                <a href="index.php" id="new" class="btn btn-primary"><i class="fas fa-plus"></i>Cadastrar novo usuario</a>
+                <a href="../cadastro/index.php" id="new" class="btn btn-primary"><i class="fas fa-plus"></i>Cadastrar novo usuario</a>
                 </li>
               </ul>
             </header>

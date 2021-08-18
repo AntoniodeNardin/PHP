@@ -2,7 +2,7 @@
 if(isset($_POST['id'])){
     $id = $_POST['id'];
 try {
-    require_once 'conexão.php';
+    require_once '../conexão/conexão.php';
     $query = $con->prepare("select idPessoas,nome,funcao,data_de_nascimento from Pessoas where idPessoas = $id");
     $query->execute();
     if ($query->rowCount() > 0) {

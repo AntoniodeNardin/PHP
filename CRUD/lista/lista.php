@@ -1,6 +1,6 @@
 <?php
 try {
-  require_once 'conexão.php';
+  require_once '../conexão/conexão.php';
     $query = $con->prepare("select idPessoas,nome,funcao,data_de_nascimento from Pessoas");
     $query->execute();
     if ($query->rowCount() > 0) {
@@ -13,11 +13,11 @@ try {
                       <td>'.$row->funcao.'</td>
                       <td>'.$row->data_de_nascimento.'</td>
 
-                      <td><form action="editar.php" method="post" class ="off">
+                      <td><form action="../editar/editar.php" method="post" class ="off">
                       <input type="hidden" name="id" value="'.$row->idPessoas.'" hidden>
                       <button type = "submit" class = "btn-primary" >editar<i class="far fa-edit"></i></button></form>
                       
-                    <form action="excluir.php" method="post" class ="off">
+                    <form action="../excluir/excluir.php" method="post" class ="off">
                     <input type="hidden" name="id" class ="off" value="'.$row->idPessoas.'" hidden>
                     <button type = "submit" class="btn-danger" >excluir<i class="fas fa-trash"></i></button></form>
                     </td>
