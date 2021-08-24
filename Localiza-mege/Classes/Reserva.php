@@ -10,8 +10,9 @@ class Reserva{
     private $carro;
     private $pessoa;
     private $total;
+    private $cupom;
 
-    public function __construct($local_retirada,$data_retirada,$hora_retirada,$local_devolução,$data_devolução,$hora_devolução,$carro,$pessoa)
+    public function __construct($local_retirada,$data_retirada,$hora_retirada,$local_devolução,$data_devolução,$hora_devolução,$carro,$pessoa,$cupom)
     {
         $this->setLocalRetirada($local_retirada);
         $this->setDataRetirada($data_retirada);
@@ -19,6 +20,7 @@ class Reserva{
         $this->setLocalDevolução($local_devolução);
         $this->setDataDevolução($data_devolução);
         $this->setHoraDevolução($hora_devolução);
+        $this->setCupom($cupom);
         $this->setCarro($carro);
         $this->setPessoa($pessoa);
         $this->setTotal();
@@ -124,8 +126,11 @@ class Reserva{
     public function total(){
         $dias = $this->diasDatas($this->getDataRetirada(),$this->getDataDevolução());
         $total = $dias * $this->getPreço();
-        if($dias>= 7){
+        if($this->getCupom() == 'MEGE'){
             $total *= 1.0;
+            return $total;
+        }
+        else{
             return $total;
         }
     }
@@ -146,5 +151,25 @@ class Reserva{
          echo $this->getPessoa()->getNome(). ' esta alugando o carro: '.$this->getCarro()->getModelo().
          ' de valor diario de '.$this->carro->getAluguel().' por '.$this->diasDatas($this->getDataRetirada(),$this->getDataDevolução()).' dias, pelo valor total de: '.$this->total();
 
+    }
+
+    /**
+     * Get the value of cupom
+     */
+    public function getCupom()
+    {
+        return $this->cupom;
+    }
+
+    /**
+     * Set the value of cupom
+     *
+     * @return  self
+     */
+    public function setCupom($cupom)
+    {
+        $this->cupom = $cupom;
+
+        return $this;
     }
 }

@@ -9,6 +9,9 @@
     <title>Document</title>
 </head>
 <style>
+    .resumo> h1,h2,h3,h4,p{
+        font-size: 1.0em;
+    }
     .container{
         padding: 0px 0px;
     }
@@ -16,19 +19,60 @@
         margin: 10px;
         padding: 10px;
     }
+    .resumo > h2{
+    background-color: #004A33;
+    border-radius: 6px 6px 0px 0px;
+    padding: 20px;
+    color:#fff;
+    text-align: center;
+
+}
+.resumo > h3{
+    color: #4DAC6D;
+    margin-left: 10px;
+}
+.resumo > h4,p{
+    margin-left: 10px;
+}
+.resumo{
+    box-shadow: 0 5px 14px 0px #151313ab;
+    padding-bottom: 10px;
+    border-radius: 4px;
+    width: 500px;
+    margin-top: -300px;
+    margin-left: 600px;
+}
+header{
+    height: 120px;
+    margin-top: 20px;
+    background-color: #009849;
+}
+header>h1{
+  padding: 35px;
+  color: white;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+img{
+  padding: 50px;
+}
 </style>
 <body>
 <?php
-$local_retirada = $_POST['local-retirada'];
+
+    $local_retirada = $_POST['local-retirada'];
     $data_retirada = $_POST['data-retirada'];
     $hora_retirada = $_POST['hora-retirada'];
-    
+    $cupom = $_POST['cupom'];
     $local_devolucao = $_POST['local-devolucao'];
     $data_devolucao = $_POST['data-devolucao'];
     $hora_devolucao = $_POST['hora-devolucao'];
     $valor = $_POST['valor'];
     $i = $_POST['carro'];
     $oferta = $_POST['oferta'];
+    $cupom = $_POST['cupom'];
 
         require_once 'Classes/Carro.php';
         require_once 'Classes/Cliente.php';
@@ -41,39 +85,33 @@ $local_retirada = $_POST['local-retirada'];
         $carro[2] = new Carro('Kwid','Renault','Bege',1.0,true,130,'B');
         $carro[3] = new Carro('Sandero','Renault','Azul',1.6,true,180,'C');
         $cliente[1] = new Cliente('Rafael','053385800-64','rafael123@gmail.com',995584319);
-        $reserva[1] = new Reserva($local_retirada,$data_retirada,$hora_retirada,$local_devolucao,$data_devolucao,$hora_devolucao,$carro[1],$cliente[1]);
+        $reserva[1] = new Reserva($local_retirada,$data_retirada,$hora_retirada,$local_devolucao,$data_devolucao,$hora_devolucao,$carro[$i],$cliente[1],$cupom);
 
         }
         ?>
+        <main>
         <div class="container">
-        <form action="reserva.php" method="post">
-            <div class="row">
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="Nacionalidade" aria-label="First name" name="nacionalidade">
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="CPF" aria-label="Last name" name="CPF">
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="Número" aria-label="First name" name="numero">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="Nome Completo" aria-label="First name" name="email">
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" placeholder="E-mail" aria-label="Last name" name="email">
-                </div>
-                <div class="col">
-                  <input type="submit" class="form-control bg-info" placeholder="" aria-label="First name">
-                </div>
-            </div>
-        </form>
-    </div>
+        <header>
+          <h1>Localiza-Mege</h1>
+        </header>
+        <?php
+        switch ($carro[$i]->getGrupo()) {
+          case 'A':
+            echo '  <img src="imagem/Fiat-argo.png" alt="">';
+            break;
+            case 'B':
+              echo ' <img src="imagem/Renault_KWID.png" alt="">';
+              break;
+              case 'C':
+                echo '<img src="imagem/Renault-sandero.png" alt="">';
+                break;
+          default:
+            # code...
+            break;
+        }?>
 
-<div class="container">
-    
+<div class="resumo">
+  
                 <h2>Resumo da Reserva</h2>
                 <h3>Retirada</h3>
                 <h4><?php echo 'Data:' .$reserva[1]->inverteData($data_retirada).' / Hora:'. $hora_retirada ?></h4>
@@ -105,5 +143,6 @@ $local_retirada = $_POST['local-retirada'];
                     <p><?php echo 'Em até 10x de R$ '.($valor*$reserva[1]->diasDatas($data_retirada,$data_devolucao))/10 ?></p>
                 </div>
 </div>
+            </main>
 </body>
 </html>

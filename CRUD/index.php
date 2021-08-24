@@ -19,6 +19,7 @@
   header{
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
   }
   header i{
     margin-left: 10px;
@@ -36,10 +37,10 @@
     <div class="container">
         <header>
           <h1>Cadastro</h1>
-          <a href="../lista/listaCRUD.php" id="list" class="btn btn-primary">Lista<i class="fas fa-bars"></i></a>
+          <a href="lista/listaCRUD.php" id="list" class="btn btn-primary">Lista<i class="fas fa-bars"></i></a>
         </header>
         <hr>
-        <form action="cadastro.php" method="post">
+        <form action="cadastro/cadastro.php" method="post">
         <div class="row mb-3">
                   <label for="inputName3" class="col-sm-2 col-form-label">Nome</label>
                   <div class="col-sm-10">
@@ -60,14 +61,15 @@
                   </div>
                   
                <footer>
-                 <a href="../lista/listaCRUD.php" class="btn btn-danger">Cancelar</a>
+                 <a href="lista/listaCRUD.php" class="btn btn-danger">Cancelar</a>
                    <button type="submit" class="btn btn-primary">Cadastrar</button>
                </footer>
         </form>
    
 
 <?php
-require_once 'cadastro.php'
+require_once 'cadastro/cadastro.php'
+
 ?>
  </div>
     </body>

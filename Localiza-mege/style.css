@@ -1,7 +1,7 @@
 body{
     font-family: sans-serif;
 }
-.container > h2{
+.resumo > h2{
     background-color: #004A33;
     border-radius: 6px 6px 0px 0px;
     padding: 20px;
@@ -9,14 +9,14 @@ body{
     text-align: center;
     font-size: 18px;
 }
-.container > h3{
+.resumo > h3{
     color: #4DAC6D;
     margin-left: 10px;
 }
-.container > h4,p{
+.resumo > h4,p{
     margin-left: 10px;
 }
-.container{
+.resumo{
     box-shadow: 0 5px 14px 0px #151313ab;
     padding-bottom: 10px;
     border-radius: 4px;
@@ -31,7 +31,7 @@ body{
 .oferta :hover{
     background-color: #009849;
     border-radius: 10px;
-    color: #D3DB26;
+    color: white;
 }
 .flex{
     display: flex;
@@ -61,7 +61,7 @@ font-family: sans-serif;
 width: 375px;
 margin: 0 auto;
 }
-.container > h2{
+.resumo > h2{
 background-color: #004A33;
 border-radius: 6px 6px 0px 0px;
 padding: 20px;
@@ -69,14 +69,14 @@ color:#fff;
 text-align: center;
 font-size: 18px;
 }
-.container > h3{
+.resumo > h3{
 color: #4DAC6D;
 margin-left: 10px;
 }
-.container > h4,p{
+.resumo > h4,p{
 margin-left: 10px;
 }
-.container{
+.resumo{
 box-shadow: 0 5px 14px 0px #151313ab;
 padding-bottom: 10px;
 border-radius: 4px;
