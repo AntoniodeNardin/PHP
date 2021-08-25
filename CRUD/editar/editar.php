@@ -26,10 +26,10 @@ if(isset($_POST['nome'],$_POST['funcao'],$_POST['data_de_nascimento'])){
         $data = $_POST['data_de_nascimento'];
     
     try {
-        require_once 'conexão.php';
+        require_once '../conexão/conexão.php';
         $query = $con->prepare("UPDATE`Pessoas` SET `nome` = '$nome', `funcao` = '$funcao', `data_de_nascimento` = '$data' WHERE (`idPessoas` = '$id'); )")->execute();
         echo '<button class ="btn btn-secondary">Editado com sucesso</button>';
-        header('location:listaCRUD.php');
+        header('location:../lista/listaCRUD.php');
 
     
     }catch (PDOException $exception){

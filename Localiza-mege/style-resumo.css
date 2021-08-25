@@ -1,0 +1,50 @@
+.resumo > h1,h2,h3,h4,p{
+    font-size: 1.0em;
+}
+.container{
+    padding: 0px 0px;
+}
+input{
+    margin: 10px;
+    padding: 10px;
+}
+.resumo > h2{
+background-color: #004A33;
+border-radius: 6px 6px 0px 0px;
+padding: 20px;
+color:#fff;
+text-align: center;
+
+}
+.resumo > h3{
+color: #4DAC6D;
+margin-left: 10px;
+font-size: 25px;
+}
+.resumo > h4,p{
+margin-left: 10px;
+font-size: 16px;
+}
+.resumo{
+box-shadow: 0 5px 14px 0px #151313ab;
+padding-bottom: 10px;
+border-radius: 4px;
+width: 500px;
+margin-top: -300px;
+margin-left: 600px;
+}
+header{
+height: 120px;
+background-color: #009849;
+}
+header>h1{
+padding: 35px;
+color: white;
+}
+body{
+margin: 0;
+padding: 0;
+}
+img{
+padding: 50px;
+}

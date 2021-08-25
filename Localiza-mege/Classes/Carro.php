@@ -1,21 +1,23 @@
 <?php
 class Carro{
+
     private $modelo;
     private $marca;
     private $cor;
     private $potencia;
     private $ar_condicionado;
-    private $aluguel;
+    private $Diaria;
     private $grupo;
+    private $cupom;
 
-    public function __construct($modelo,$marca,$cor,$potencia,$ar_condicionado,$aluguel,$grupo)
+    public function __construct($modelo,$marca,$cor,$potencia,$ar_condicionado,$Diaria,$grupo,$cupom)
     {
         $this->setModelo($modelo);
         $this->setMarca($marca);
         $this->setCor($cor);
         $this->setPotencia($potencia);
         $this->setAr_condicionado($ar_condicionado);
-        $this->setAluguel($aluguel);
+        $this->setDiaria($Diaria);
         $this->setGrupo($grupo);
     }
 
@@ -49,34 +51,38 @@ class Carro{
     public function setAr_condicionado($ar_condicionado){
         $this->ar_condicionado = $ar_condicionado;
     }
-
-    public function getAluguel()
+    public function getDiaria()
     {
-        return $this->aluguel;
+        return $this->Diaria;
     }
-    public function setAluguel($aluguel)
+    public function setDiaria($Diaria)
     {
-        $this->aluguel = $aluguel;
+        $this->Diaria = $Diaria;
     }
-
-    /**
-     * Get the value of grupo
-     */
     public function getGrupo()
     {
         return $this->grupo;
     }
-
-    /**
-     * Set the value of grupo
-     *
-     * @return  self
-     */
     public function setGrupo($grupo)
     {
         $this->grupo = $grupo;
 
         return $this;
+    }
+    public function getCupom()
+    {
+        return $this->cupom;
+    }
+    public function setCupom($cupom)
+    {
+        $this->cupom = $cupom;
+
+        return $this;
+    }
+    public function testeCupom($cupom){
+        if($cupom == 'MEGE'){
+            $this->setDiaria($this->getDiaria()-15);
+        }
     }
 }
 ?>

@@ -1,6 +1,7 @@
 <?php
 require_once 'Carro.php';
 class Reserva{
+
     private $local_retirada;
     private $data_retirada;
     private $hora_retirada;
@@ -10,9 +11,8 @@ class Reserva{
     private $carro;
     private $pessoa;
     private $total;
-    private $cupom;
 
-    public function __construct($local_retirada,$data_retirada,$hora_retirada,$local_devolução,$data_devolução,$hora_devolução,$carro,$pessoa,$cupom)
+    public function __construct($local_retirada,$data_retirada,$hora_retirada,$local_devolução,$data_devolução,$hora_devolução,$carro,$pessoa)
     {
         $this->setLocalRetirada($local_retirada);
         $this->setDataRetirada($data_retirada);
@@ -20,10 +20,8 @@ class Reserva{
         $this->setLocalDevolução($local_devolução);
         $this->setDataDevolução($data_devolução);
         $this->setHoraDevolução($hora_devolução);
-        $this->setCupom($cupom);
         $this->setCarro($carro);
         $this->setPessoa($pessoa);
-        $this->setTotal();
     }
     
     public function getLocalRetirada()
@@ -38,7 +36,7 @@ class Reserva{
     }
     public function getPreço()
     {
-        return $this->carro->getAluguel();
+        return $this->carro->getDiaria();
     }
     public function setPreço()
     {
@@ -117,22 +115,11 @@ class Reserva{
     {
         return $this->total;
     }
-    public function setTotal()
-    {
-        $this->total = $this->total();
-    }
 
-
-    public function total(){
+    public function total($preco){
         $dias = $this->diasDatas($this->getDataRetirada(),$this->getDataDevolução());
-        $total = $dias * $this->getPreço();
-        if($this->getCupom() == 'MEGE'){
-            $total *= 1.0;
-            return $total;
-        }
-        else{
-            return $total;
-        }
+        $total = $dias * $preco;
+        return $total;
     }
     public function diasDatas($data_inicial,$data_final) {
         $diferenca = strtotime($data_final) - strtotime($data_inicial);
@@ -145,31 +132,5 @@ class Reserva{
         }elseif(count(explode("-",$data)) > 1){
             return implode("/",array_reverse(explode("-",$data)));
         }
-    }
-
-    public function Apresentar(){
-         echo $this->getPessoa()->getNome(). ' esta alugando o carro: '.$this->getCarro()->getModelo().
-         ' de valor diario de '.$this->carro->getAluguel().' por '.$this->diasDatas($this->getDataRetirada(),$this->getDataDevolução()).' dias, pelo valor total de: '.$this->total();
-
-    }
-
-    /**
-     * Get the value of cupom
-     */
-    public function getCupom()
-    {
-        return $this->cupom;
-    }
-
-    /**
-     * Set the value of cupom
-     *
-     * @return  self
-     */
-    public function setCupom($cupom)
-    {
-        $this->cupom = $cupom;
-
-        return $this;
     }
 }

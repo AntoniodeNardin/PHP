@@ -13,7 +13,7 @@ try {
                       <td>'.$row->funcao.'</td>
                       <td>'.$row->data_de_nascimento.'</td>
 
-                      <td><form action="../editar/editar.php" method="post" class ="off">
+                      <td><form action="../editar/editarCRUD.php" method="post" class ="off">
                       <input type="hidden" name="id" value="'.$row->idPessoas.'" hidden>
                       <button type = "submit" class = "btn-primary" >editar<i class="far fa-edit"></i></button></form>
                       

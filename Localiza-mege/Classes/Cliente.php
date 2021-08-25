@@ -5,13 +5,15 @@ class Cliente{
     private $cpf;
     private $email;
     private $telefone;
+    private $cupom;
 
-    public function __construct($nome,$cpf,$email,$telefone)
+    public function __construct($nome,$cpf,$email,$telefone,$cupom)
     {
         $this->setNome($nome);
         $this->setCPF($cpf);
         $this->setEmail($email);
         $this->setTelefone($telefone);
+        $this->setCupom($cupom);
     }
 
     public function getNome(){
@@ -37,6 +39,16 @@ class Cliente{
     }
     public function setTelefone($telefone){
         $this->telefone = $telefone;
+    }
+    public function getCupom()
+    {
+        return $this->cupom;
+    }
+    public function setCupom($cupom)
+    {
+        $this->cupom = $cupom;
+
+        return $this;
     }
 }
 ?>

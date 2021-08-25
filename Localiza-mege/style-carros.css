@@ -1,0 +1,70 @@
+.container{
+    padding: 0px 0px;
+}
+input{
+    margin: 10px;
+    padding: 10px;
+}
+.resumo > h2{
+background-color: #004A33;
+border-radius: 6px 6px 0px 0px;
+padding: 20px;
+color:#fff;
+text-align: center;
+font-size: 18px;
+}
+.resumo > h3{
+color: #4DAC6D;
+margin-left: 10px;
+}
+.resumo > h4,p{
+margin-left: 10px;
+}
+.resumo{
+box-shadow: 0 5px 14px 0px #151313ab;
+padding-bottom: 10px;
+border-radius: 4px;
+margin: 0 auto;
+width: 400px;
+} 
+.oferta-content{
+padding: 5px 0px;
+padding-right: 15px;
+}
+.oferta{
+margin: 10px;
+box-shadow: 0px 0px 6px #000010;
+
+}
+header>h1{
+padding: 35px;
+color: white;
+}
+header{
+height: 120px;
+margin-top: -55px;
+background-color: #009849;
+}
+h1{
+margin-left: 20px;
+}
+body{
+margin: 0px;
+padding: 0px;
+}
+.oferta :hover{
+background-color: #009849;
+color: white;
+}
+fieldset{
+border: 0.5px solid gray;
+background-color: white;
+}
+body{
+font-size: 1.1em;
+background-color: #00984943;
+}
+.valor{
+color:#009849 ;
+font-size: 20px
+}

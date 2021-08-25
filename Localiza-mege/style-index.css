@@ -1,0 +1,56 @@
+
+ input[type="date"]:before {
+  color: grey;
+  content: attr(placeholder) !important;
+  margin-right: 0.5em;
+}
+input[type="date"]:focus:before {
+  content: '' !important;
+}
+input[type="time"]:before {
+  color: grey;
+  content: attr(placeholder) !important;
+  margin-right: 0.5em;
+}
+input[type="time"]:focus:before {
+  content: '' !important;
+}
+i{
+    margin-left: 230px;
+    padding: 0;
+}
+#dados{
+    background-color: #004A33;
+}
+header{
+    height: 120px;
+    margin-top: 20px;
+    background-color: #009849;
+}
+.input{
+    padding: 15px;
+    margin: 0px 20px;
+}
+.botao{
+    padding: 0px;
+}
+body{
+  background-color: #52D38D;
+}
+h1{
+  padding: 30px;
+  color: white;
+}
+#data{
+  background-color:  #009849;
+  padding: 30px
+}
+#date{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.botton{
+  margin-top: 10px;
+  background-color: #E7F033;
+  color: #009849 ;
+}
