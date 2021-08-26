@@ -59,6 +59,8 @@ color: white;
 fieldset{
 border: 0.5px solid gray;
 background-color: white;
+width: 330px;
+margin: 20px auto;
 }
 body{
 font-size: 1.1em;
@@ -67,4 +69,7 @@ background-color: #00984943;
 .valor{
 color:#009849 ;
 font-size: 20px
+}
+.flex{
+    flex-wrap: wrap;
 }

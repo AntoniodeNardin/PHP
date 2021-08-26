@@ -19,6 +19,7 @@ class Carro{
         $this->setAr_condicionado($ar_condicionado);
         $this->setDiaria($Diaria);
         $this->setGrupo($grupo);
+        $this->setCupom($cupom);
     }
 
     public function getModelo(){
@@ -82,6 +83,15 @@ class Carro{
     public function testeCupom($cupom){
         if($cupom == 'MEGE'){
             $this->setDiaria($this->getDiaria()-15);
+            return $this->getDiaria();
+        }
+        else{
+            return $this->getDiaria();
+        }
+    }
+    public function desconto($cupom){
+        if($cupom == 'MEGE'){
+            echo '<p>Desconto de 15 reais aplicado na diária</p>';
         }
     }
 }

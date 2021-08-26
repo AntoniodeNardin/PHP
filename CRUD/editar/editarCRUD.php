@@ -43,7 +43,7 @@ require_once 'editar.php'
                   <input type="hidden" name="id" value="<?php echo $id; ?>">
                   
                <p>
-               <a href="listaCRUD.php" class="btn btn-danger">Cancelar</a><button type="submit" class="btn btn-primary">Salvar</button>  </p>
+               <a href="../lista/listaCRUD.php" class="btn btn-danger">Cancelar</a><button type="submit" class="btn btn-primary">Salvar</button>  </p>
         </form>
 </div>
 </body>

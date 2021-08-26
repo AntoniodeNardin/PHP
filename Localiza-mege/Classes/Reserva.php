@@ -119,8 +119,20 @@ class Reserva{
     public function total($preco){
         $dias = $this->diasDatas($this->getDataRetirada(),$this->getDataDevolução());
         $total = $dias * $preco;
-        return $total;
+        if($dias >= 7 && $dias <14){
+            $total *= 0.9;
+            return $total;
+        }
+        if($dias >= 14 && $dias <28){
+            $total *= 0.8;
+            return $total;
+        }
+        if($dias >= 28){
+            $total *= 0.75;
+            return $total;
     }
+    return $total;
+}
     public function diasDatas($data_inicial,$data_final) {
         $diferenca = strtotime($data_final) - strtotime($data_inicial);
         $dias = floor($diferenca / (60 * 60 * 24)); 
@@ -132,5 +144,17 @@ class Reserva{
         }elseif(count(explode("-",$data)) > 1){
             return implode("/",array_reverse(explode("-",$data)));
         }
+    }
+    public function desconto($dias){
+        if ($dias >= 7 && $dias <14){
+            echo 'desconto semanal aplicado de 10%';
+        }
+        if ($dias >= 14 && $dias < 28){
+            echo 'desconto quinzenal aplicado de 20%';
+        }
+        if ($dias >= 28){
+            echo 'desconto mensal aplicado de 25%';
+        }
+
     }
 }
