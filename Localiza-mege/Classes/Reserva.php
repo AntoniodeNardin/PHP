@@ -147,13 +147,13 @@ class Reserva{
     }
     public function desconto($dias){
         if ($dias >= 7 && $dias <14){
-            echo 'desconto semanal aplicado de 10%';
+            echo 'Desconto semanal aplicado de 10%';
         }
         if ($dias >= 14 && $dias < 28){
-            echo 'desconto quinzenal aplicado de 20%';
+            echo 'Desconto quinzenal aplicado de 20%';
         }
         if ($dias >= 28){
-            echo 'desconto mensal aplicado de 25%';
+            echo 'Desconto mensal aplicado de 25%';
         }
 
     }

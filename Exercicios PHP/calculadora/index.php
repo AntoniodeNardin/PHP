@@ -32,13 +32,12 @@
        <p><input type="submit" value="enviar"></p>
        </form>
        <?php
-   $a = 0;
-   $b = 0;
-   $op = 0;
+       
 
    $a = $_POST["num1"];
    $b = $_POST["num2"];
    $op= $_POST["operação"];
+   if(isset($a,$b,$op)){
    switch ($op) {
       case '+':
          echo 'a soma dos valores é:'.$a+$b;
@@ -53,6 +52,7 @@
                   echo 'a divisão dos valores é: '.$a/$b;
                   break;
    }
+}
    
 ?>       
    </section>

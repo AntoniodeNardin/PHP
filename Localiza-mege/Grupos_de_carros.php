@@ -11,11 +11,18 @@
 </head>
 <pre>
     <?php
+    session_start();
+
     $cliNome = $_POST['nome'];
     $cliEmail = $_POST['email'];
     $cliCPF = $_POST['cpf'];
     $cliNumero = $_POST['numero'];
     $cupom = $_POST['cupom'];
+
+    $_SESSION['nome'] = $cliNome;
+    $_SESSION['email'] = $cliEmail;
+    $_SESSION['cpf'] = $cliCPF;
+    $_SESSION['numero'] = $cliNumero;
 
     $local_retirada = $_POST['local-retirada'];
     $data_retirada = $_POST['data-retirada'];
@@ -25,21 +32,26 @@
     $data_devolucao = $_POST['data-devolucao'];
     $hora_devolucao = $_POST['hora-devolucao'];
 
+    $_SESSION['local-retirada'] = $local_retirada;
+    $_SESSION['data-retirada'] = $data_retirada;
+    $_SESSION['hora-retirada'] = $hora_retirada;
+
+    $_SESSION['local-devolucao'] = $local_devolucao;
+    $_SESSION['data-devolucao'] = $data_devolucao;
+    $_SESSION['hora-devolucao'] = $hora_devolucao;
+
     require_once 'Classes/Carro.php';
-    require_once 'Classes/Cliente.php';
-    require_once 'Classes/Reserva.php';
 
 
     if (isset($local_retirada, $local_devolucao, $data_retirada, $data_devolucao, $hora_retirada, $hora_devolucao)) {
 
-        $carro[1] = new Carro('Argo', 'Fiat', 'Branco', 1.2, true, 150, 'A', $cupom);
-        $carro[2] = new Carro('Kwid', 'Renault', 'Bege', 1.0, true, 130, 'B', $cupom);
-        $carro[3] = new Carro('Sandero', 'Renault', 'Azul', 1.6, true, 180, 'C', $cupom);
-        $cliente[1] = new Cliente($cliNome, $cliCPF, $cliEmail, $cliNumero, $cupom);
+        require_once 'carros.php';
     }
+    
     $carro[1]->testeCupom($cupom);
     $carro[2]->testeCupom($cupom);
     $carro[3]->testeCupom($cupom);
+
     ?>
 </pre>
 <style>
@@ -49,6 +61,7 @@
     .desconto{
         font-size: 13px;
         color: orange;
+        text-decoration: underline;
     }
 </style>
 <body>
@@ -80,12 +93,6 @@
                                 <input type="hidden" name="oferta" value="std">
                                 <input type="hidden" name="carro" value="1">
                                 <input type="hidden" name="valor" value="<?php echo $carro[1]->getDiaria() ?>">
-                                <input type="hidden" name="local-retirada" value=" <?php echo $local_retirada ?>">
-                                <input type="hidden" name="data-retirada" value=" <?php echo $data_retirada ?>">
-                                <input type="hidden" name="hora-retirada" value=" <?php echo $hora_retirada ?>">
-                                <input type="hidden" name="local-devolucao" value=" <?php echo $local_devolucao ?>">
-                                <input type="hidden" name="data-devolucao" value=" <?php echo $data_devolucao ?>">
-                                <input type="hidden" name="hora-devolucao" value=" <?php echo $hora_devolucao ?>">
                             </div>
                         </div>
                     </button>
@@ -109,12 +116,6 @@
                                 <input type="hidden" name="oferta" value="plus">
                                 <input type="hidden" name="valor" value="<?php echo $carro[1]
                                                                                 ->getDiaria() + 20 ?>">
-                                <input type="hidden" name="local-retirada" value=" <?php echo $local_retirada ?>">
-                                <input type="hidden" name="data-retirada" value=" <?php echo $data_retirada ?>">
-                                <input type="hidden" name="hora-retirada" value=" <?php echo $hora_retirada ?>">
-                                <input type="hidden" name="local-devolucao" value=" <?php echo $local_devolucao ?>">
-                                <input type="hidden" name="data-devolucao" value=" <?php echo $data_devolucao ?>">
-                                <input type="hidden" name="hora-devolucao" value=" <?php echo $hora_devolucao ?>">
                             </div>
                         </div>
                     </button>
@@ -142,12 +143,6 @@
                                 <input type="hidden" name="carro" value="2">
                                 <input type="hidden" name="oferta" value="std">
                                 <input type="hidden" name="valor" value="<?php echo $carro[2]->getDiaria() ?>">
-                                <input type="hidden" name="local-retirada" value=" <?php echo $local_retirada ?>">
-                                <input type="hidden" name="data-retirada" value=" <?php echo $data_retirada ?>">
-                                <input type="hidden" name="hora-retirada" value=" <?php echo $hora_retirada ?>">
-                                <input type="hidden" name="local-devolucao" value=" <?php echo $local_devolucao ?>">
-                                <input type="hidden" name="data-devolucao" value=" <?php echo $data_devolucao ?>">
-                                <input type="hidden" name="hora-devolucao" value=" <?php echo $hora_devolucao ?>">
                             </div>
                         </div>
                     </button>
@@ -171,12 +166,6 @@
                                 <input type="hidden" name="oferta" value="plus">
                                 <input type="hidden" name="valor" value="<?php echo $carro[2]
                                                                                 ->getDiaria() + 20 ?>">
-                                <input type="hidden" name="local-retirada" value=" <?php echo $local_retirada ?>">
-                                <input type="hidden" name="data-retirada" value=" <?php echo $data_retirada ?>">
-                                <input type="hidden" name="hora-retirada" value=" <?php echo $hora_retirada ?>">
-                                <input type="hidden" name="local-devolucao" value=" <?php echo $local_devolucao ?>">
-                                <input type="hidden" name="data-devolucao" value=" <?php echo $data_devolucao ?>">
-                                <input type="hidden" name="hora-devolucao" value=" <?php echo $hora_devolucao ?>">
                             </div>
                         </div>
                     </button>
@@ -204,12 +193,6 @@
                                 <input type="hidden" name="carro" value="3">
                                 <input type="hidden" name="oferta" value="std">
                                 <input type="hidden" name="valor" value="<?php echo $carro[3]->getDiaria() ?>">
-                                <input type="hidden" name="local-retirada" value=" <?php echo $local_retirada ?>">
-                                <input type="hidden" name="data-retirada" value=" <?php echo $data_retirada ?>">
-                                <input type="hidden" name="hora-retirada" value=" <?php echo $hora_retirada ?>">
-                                <input type="hidden" name="local-devolucao" value=" <?php echo $local_devolucao ?>">
-                                <input type="hidden" name="data-devolucao" value=" <?php echo $data_devolucao ?>">
-                                <input type="hidden" name="hora-devolucao" value=" <?php echo $hora_devolucao ?>">
                             </div>
                         </div>
                     </button>
@@ -233,12 +216,6 @@
                                 <input type="hidden" name="oferta" value="plus">
                                 <input type="hidden" name="valor" value="<?php echo $carro[3]
                                                                                 ->getDiaria() + 20 ?>">
-                                <input type="hidden" name="local-retirada" value=" <?php echo $local_retirada ?>">
-                                <input type="hidden" name="data-retirada" value=" <?php echo $data_retirada ?>">
-                                <input type="hidden" name="hora-retirada" value=" <?php echo $hora_retirada ?>">
-                                <input type="hidden" name="local-devolucao" value=" <?php echo $local_devolucao ?>">
-                                <input type="hidden" name="data-devolucao" value=" <?php echo $data_devolucao ?>">
-                                <input type="hidden" name="hora-devolucao" value=" <?php echo $hora_devolucao ?>">
                             </div>
                         </div>
                     </button>

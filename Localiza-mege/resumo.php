@@ -15,39 +15,52 @@
         box-shadow: 0px 2px 4px #000002;
         border-radius: 16px;
         margin-top: 30px;
+        background-color: white;
     }
     .resumo{
         margin-top: -325px;
+        background-color: white;
+    }
+    .desconto{
+        color: orange;
+        text-decoration: underline;
+    }
+    .valor-total{
+        font-size: 22px;
+    }
+    body{
+        background-color: #00984915
+    }
+    .total{
+        border-radius: 0px 0px 10px 10px;
+        margin-bottom: -20px;
     }
 </style>
 <body>
     <?php
+    session_start();
 
-    $local_retirada = $_POST['local-retirada'];
-    $data_retirada = $_POST['data-retirada'];
-    $hora_retirada = $_POST['hora-retirada'];
-    $cupom = $_POST['cupom'];
-    $local_devolucao = $_POST['local-devolucao'];
-    $data_devolucao = $_POST['data-devolucao'];
-    $hora_devolucao = $_POST['hora-devolucao'];
+    $local_retirada = $_SESSION['local-retirada'];
+    $data_retirada = $_SESSION['data-retirada'];
+    $hora_retirada = $_SESSION['hora-retirada'];
+
+    $local_devolucao = $_SESSION['local-devolucao'];
+    $data_devolucao = $_SESSION['data-devolucao'];
+    $hora_devolucao = $_SESSION['hora-devolucao'];
+
     $valor = $_POST['valor'];
     $i = $_POST['carro'];
     $oferta = $_POST['oferta'];
     $cupom = $_POST['cupom'];
 
+
     require_once 'Classes/Carro.php';
     require_once 'Classes/Cliente.php';
     require_once 'Classes/Reserva.php';
+    require_once 'carros.php';
+        $cliente[1] = new Cliente($_SESSION['nome'], $_SESSION['cpf'], $_SESSION['email'], $_SESSION['numero'], $cupom);
+        $reserva[1] = new Reserva($_SESSION['local-retirada'], $_SESSION['data-retirada'], $_SESSION['hora-retirada'], $_SESSION['local-devolucao'], $_SESSION['data-devolucao'], $_SESSION['hora-devolucao'], $carro[$i], $cliente[1], $cupom);
 
-
-    if (isset($local_retirada, $local_devolucao, $data_retirada, $data_devolucao, $hora_retirada, $hora_devolucao)) {
-
-        $carro[1] = new Carro('Argo', 'Fiat', 'Branco', 1.2, true, 150, 'A', $cupom);
-        $carro[2] = new Carro('Kwid', 'Renault', 'Bege', 1.0, true, 130, 'B', $cupom);
-        $carro[3] = new Carro('Sandero', 'Renault', 'Azul', 1.6, true, 180, 'C', $cupom);
-        $cliente[1] = new Cliente('Rafael', '053385800-64', 'rafael123@gmail.com', 995584319, $cupom);
-        $reserva[1] = new Reserva($local_retirada, $data_retirada, $hora_retirada, $local_devolucao, $data_devolucao, $hora_devolucao, $carro[$i], $cliente[1], $cupom);
-    }
     ?>
     <main>
         <header>
@@ -74,11 +87,11 @@
 
                 <h2>Resumo da Reserva</h2>
                 <h3>Retirada</h3>
-                <h4><?php echo 'Data:' . $reserva[1]->inverteData($data_retirada) . '  Hora:' . $hora_retirada ?></h4>
+                <h4><?php echo 'Data:' . $reserva[1]->inverteData($data_retirada) . ' | Hora:' . $hora_retirada ?></h4>
                 <p><?php echo 'Local: ' . $reserva[1]->getLocalRetirada() ?></p>
                 <hr>
                 <h3>Devolução</h3>
-                <h4><?php echo 'Data:' . $reserva[1]->inverteData($data_devolucao) . ' Hora:' . $hora_devolucao ?></h4>
+                <h4><?php echo 'Data:' . $reserva[1]->inverteData($data_devolucao) . ' | Hora:' . $hora_devolucao ?></h4>
                 <p><?php echo 'Local: ' . $reserva[1]->getLocalDevolução() ?></p>
                 <hr>
                 <h3>Grupo</h3>
@@ -95,11 +108,15 @@
                             # code...
                             break;
                     } ?></h3>
-                <h4>Diaria <br><?php echo $reserva[1]->diasDatas($data_retirada, $data_devolucao) . ' X R$ ' . $valor ?></h4>
+                <h4>Diária <br><?php echo $reserva[1]->diasDatas($data_retirada, $data_devolucao) . ' X R$ ' . $valor ?></h4>
                 <p><?php echo 'Total:' . $reserva[1]->total($valor) ?></p>
-                <p><?php echo $reserva[1]->desconto($reserva[1]->diasDatas($data_retirada, $data_devolucao));?></p>
+                <p class="desconto"><?php echo $reserva[1]->desconto($reserva[1]->diasDatas($data_retirada, $data_devolucao));?></p>
+                <hr>
+                <h3>Locatário</h3>
+                    <p><h4><?php echo 'Nome: '. $_SESSION['nome'] ?> <?php echo '| CPF: ' .$_SESSION['cpf'];?></h4></p>
+                    <p><?php echo 'Email: ' .$_SESSION['email']?><?php echo ' | Número: '. $_SESSION['numero'];?></p>
                 <div class="total">
-                    <h3>Valor total Previsto</h3>
+                    <h2 id="valor-total">Valor total Previsto</h2>
                     <h1><?php echo 'R$' . $reserva[1]->total($valor) ?></h1>
                     <p><?php echo 'Em até 10x de R$ ' . ($reserva[1]->total($valor)) / 10 ?></p>
                 </div>
