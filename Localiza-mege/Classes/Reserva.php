@@ -119,6 +119,9 @@ class Reserva{
     public function total($preco){
         $dias = $this->diasDatas($this->getDataRetirada(),$this->getDataDevolução());
         $total = $dias * $preco;
+        if($this->getLocalRetirada() != $this->getLocalDevolução()){
+            $total = $total +30;
+        }
         if($dias >= 7 && $dias <14){
             $total *= 0.9;
             return $total;
@@ -130,6 +133,7 @@ class Reserva{
         if($dias >= 28){
             $total *= 0.75;
             return $total;
+
     }
     return $total;
 }
@@ -155,6 +159,10 @@ class Reserva{
         if ($dias >= 28){
             echo 'Desconto mensal aplicado de 25%';
         }
-
+    }
+    public function teste_local_taxa(){
+        if($this->getLocalRetirada() != $this->getLocalDevolução()){
+            echo 'Taxa de distância entre agências cobrada';
+        }
     }
 }

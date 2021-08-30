@@ -35,6 +35,10 @@
         border-radius: 0px 0px 10px 10px;
         margin-bottom: -20px;
     }
+    .taxa{
+        color: green;
+        text-decoration: underline;
+    }
 </style>
 <body>
     <?php
@@ -109,8 +113,11 @@
                             break;
                     } ?></h3>
                 <h4>Diária <br><?php echo $reserva[1]->diasDatas($data_retirada, $data_devolucao) . ' X R$ ' . $valor ?></h4>
-                <p><?php echo 'Total:' . $reserva[1]->total($valor) ?></p>
+                <p class="taxa"><?php echo $reserva[1]->teste_local_taxa()?></p>
                 <p class="desconto"><?php echo $reserva[1]->desconto($reserva[1]->diasDatas($data_retirada, $data_devolucao));?></p>
+               
+                <p><?php echo 'Total : ' . $reserva[1]->total($valor) ?></p>
+                
                 <hr>
                 <h3>Locatário</h3>
                     <p><h4><?php echo 'Nome: '. $_SESSION['nome'] ?> <?php echo '| CPF: ' .$_SESSION['cpf'];?></h4></p>
